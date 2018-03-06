@@ -1,21 +1,19 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
-        classpath 'org.robolectric:robolectric-gradle-plugin:1.1.0'
+        classpath 'com.android.tools.build:gradle:2.3.0'
     }
 }
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
     }
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'org.robolectric'
 apply plugin: 'jacoco'
 
 
@@ -51,8 +49,9 @@ task jacocoTestReport(type:JacocoReport, dependsOn: "check") {
 build.dependsOn jacocoTestReport
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.3'
+    useLibrary  'org.apache.http.legacy'
 
     packagingOptions {
         exclude 'LICENSE.txt'
@@ -68,7 +67,7 @@ android {
                     'src',
                     'core/src',
                     'modules/google_cast/src',
-                    'modules/firetv/src',
+//                    'modules/firetv/src',
             ]
             resources.srcDirs = ['src']
             aidl.srcDirs = ['src']
@@ -78,9 +77,9 @@ android {
         }
         test {
             java.srcDirs = [
-                    'core/test/src',
-                    'modules/google_cast/test/src',
-                    'modules/firetv/test/src',
+//                    'core/test/src',
+//                    'modules/google_cast/test/src',
+//                    'modules/firetv/test/src',
             ]
         }
     }
@@ -107,7 +106,7 @@ dependencies {
     compile files('core/libs/java-websocket-patch.jar')
     compile files('core/libs/javax.jmdns_3.4.1-patch2.jar')
 
-    compile fileTree(dir: 'modules/firetv/libs', include: '*.jar')
+//    compile fileTree(dir: 'modules/firetv/libs', include: '*.jar')
 
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.android.support:appcompat-v7:22.2.1'
@@ -116,7 +115,6 @@ dependencies {
 
     testCompile 'org.apache.maven:maven-ant-tasks:2.1.3'
     testCompile 'junit:junit:4.12'
-    testCompile 'org.robolectric:robolectric:2.4'
     testCompile 'org.mockito:mockito-all:1.10.19'
     testCompile 'org.powermock:powermock-api-mockito:1.6.2'
     testCompile 'xmlunit:xmlunit:1.4'
