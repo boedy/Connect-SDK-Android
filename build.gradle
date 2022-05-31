@@ -20,7 +20,7 @@ allprojects {
 apply plugin: 'com.android.library'
 apply plugin: 'jacoco'
 
-apply plugin: 'com.github.dcendents.android-maven'
+// apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.ConnectSDK'
 
 jacoco {
@@ -145,4 +145,4 @@ dependencies {
     testImplementation 'xmlunit:xmlunit:1.4'
 }
 
-apply from: 'maven-push.gradle'
+// apply from: 'maven-push.gradle'
