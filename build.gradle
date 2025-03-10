@@ -45,16 +45,17 @@ task jacocoTestReport(type:JacocoReport, dependsOn: "check") {
     sourceDirectories.from = android.sourceSets.main.java.srcDirs
     executionData.from = 'build/jacoco/testDebug.exec'
 
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
+//     reports {
+//         xml.enabled = true
+//         html.enabled = true
+//     }
 
 }
 
 build.dependsOn jacocoTestReport
 
 android {
+    namespace = 'com.connectsdk'
     compileSdkVersion 32
     buildToolsVersion '30.0.3'
 
