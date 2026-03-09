@@ -55,6 +55,9 @@ task jacocoTestReport(type:JacocoReport, dependsOn: "check") {
 build.dependsOn jacocoTestReport
 
 android {
+    if (android.hasProperty("namespace")) {
+        namespace 'com.connectsdk'
+    }
     compileSdkVersion 32
     buildToolsVersion '30.0.3'
 
